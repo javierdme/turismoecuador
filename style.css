@@ -366,9 +366,9 @@ nav a.activo, nav a:hover {
     color: var(--primary);
 }
 
-/* LISTAS DENTRO DE SERVICIOS (Alineación perfecta) */
+/* LISTAS DENTRO DE SERVICIOS (Alineación) */
 .lista-servicios {
-    list-style: none; /* Elimina puntos negros */
+    list-style: none;
     padding: 0;
     margin-top: 1.5rem;
     text-align: left; /* Mantiene el texto de la lista a la izquierda */
@@ -379,7 +379,7 @@ nav a.activo, nav a:hover {
     margin-bottom: 1.2rem;
     display: flex;
     align-items: flex-start; /* Alinea el icono arriba si el texto tiene varias líneas */
-    font-size: 1.15rem;      /* Tamaño grande como en tu imagen */
+    font-size: 1.15rem;      /* Tamaño grande como en la imagen */
     line-height: 1.4;
     letter-spacing: 0.5px;
 }
