@@ -365,19 +365,21 @@ nav a.activo, nav a:hover {
     text-align: left;      
 }
 
-.lista-servicios li {
-    margin-bottom: 0.8rem; 
-    display: flex;         
-    align-items: flex-start; /* Cambiamos a flex-start para controlar mejor el empuje */
-    font-size: 0.95rem;
-    line-height: 1.4;        /* Ajustamos la altura de línea del texto */
+/* Ajuste para que se vea idéntico a la imagen */
+.lista-servicios li, .lista-enfoques li {
+    margin-bottom: 1.2rem;    /* Aumentamos el espacio entre líneas */
+    display: flex;
+    align-items: center;      /* Alineación perfecta al centro */
+    font-size: 1.15rem;       /* Tamaño exacto para que se vea como la imagen */
+    color: #333;              /* Color de texto oscuro y nítido */
+    letter-spacing: 0.5px;    /* Un toque de espacio entre letras para legibilidad */
 }
 
-.lista-servicios .fa-check-circle {
-    color: var(--secondary); 
-    margin-right: 12px;      
-    font-size: 1.1rem;       
-    margin-top: 2px;         /* ¡EL TRUCO! Empuja el icono un par de píxeles hacia abajo */
+/* Ajuste del ícono para que no flote */
+.lista-servicios i, .lista-enfoques i {
+    color: var(--secondary);  /* Tu color azul */
+    margin-right: 15px;       /* Espacio lateral según la imagen */
+    font-size: 1.3rem;        /* Ícono un poco más grande para resaltar */
 }
 
 /* =========================================
