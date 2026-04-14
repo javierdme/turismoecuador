@@ -1,4 +1,6 @@
-/* Variables Globales */
+/* =========================================
+   VARIABLES GLOBALES Y RESET
+   ========================================= */
 :root {
     --bg-dark: #1b262c;
     --primary: #0f4c75;
@@ -21,7 +23,9 @@ body {
     line-height: 1.6;
 }
 
-/* Navegación */
+/* =========================================
+   NAVEGACIÓN PRINCIPAL
+   ========================================= */
 header {
     background-color: var(--bg-dark);
 }
@@ -49,7 +53,9 @@ nav a.activo, nav a:hover {
     border-bottom: 2px solid var(--accent);
 }
 
-/* Hero Section */
+/* =========================================
+   HERO SECTION (Inicio)
+   ========================================= */
 .hero {
     text-align: center;
     padding: 4rem 10%;
@@ -62,7 +68,9 @@ nav a.activo, nav a:hover {
     margin-bottom: 0.5rem;
 }
 
-/* BANNER COLLAGE (Inicio) */
+/* =========================================
+   BANNER COLLAGE (Inicio)
+   ========================================= */
 .seccion-banner {
     width: 100%;
     overflow: hidden;
@@ -79,7 +87,13 @@ nav a.activo, nav a:hover {
     flex: 1;
     position: relative;
     overflow: hidden;
-    transition: flex 0.6s ease;
+    transition: flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.banner-item:last-child {
+    border-right: none;
 }
 
 .banner-item img {
@@ -87,11 +101,18 @@ nav a.activo, nav a:hover {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.6);
-    transition: 0.6s;
+    transition: transform 0.8s ease, filter 0.6s ease;
+    display: block;
 }
 
-.banner-item:hover { flex: 2; }
-.banner-item:hover img { filter: brightness(1); }
+.banner-item:hover { 
+    flex: 2; 
+}
+
+.banner-item:hover img { 
+    filter: brightness(1); 
+    transform: scale(1.05);
+}
 
 .overlay {
     position: absolute;
@@ -106,9 +127,98 @@ nav a.activo, nav a:hover {
     text-transform: uppercase;
     letter-spacing: 4px;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    font-size: 1.2rem;
 }
 
-/* SECCIÓN NOSOTROS */
+/* =========================================
+   GALERÍAS INDIVIDUALES (Regiones)
+   ========================================= */
+.submenu-regiones {
+    background-color: var(--primary);
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.submenu-regiones ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.submenu-regiones a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 1px solid var(--accent);
+    transition: all 0.3s;
+}
+
+.submenu-regiones a:hover, .submenu-regiones a.activo-region {
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.galeria-especifica {
+    padding: 4rem 10%;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.galeria-especifica h2 {
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+}
+
+/* El Grid para la cuadrícula fotográfica */
+.grid-fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.foto-item {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.foto-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Control estricto para domar las imágenes gigantes */
+.foto-item img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    display: block;
+}
+
+.foto-item h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   SECCIÓN NOSOTROS
+   ========================================= */
 .perfil {
     padding: 4rem 10%;
     max-width: 1200px;
@@ -153,7 +263,9 @@ nav a.activo, nav a:hover {
     margin-right: 10px;
 }
 
-/* FORMULARIO CONTACTO */
+/* =========================================
+   FORMULARIO DE CONTACTO
+   ========================================= */
 .contacto {
     max-width: 700px;
     margin: 4rem auto;
@@ -163,11 +275,28 @@ nav a.activo, nav a:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
+.contacto h2 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.contacto p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 .formulario {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     text-align: left;
+}
+
+.campo label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .campo input, .campo textarea {
@@ -191,10 +320,17 @@ nav a.activo, nav a:hover {
 
 .btn:hover { background-color: var(--secondary); }
 
-/* SERVICIOS */
+/* =========================================
+   SERVICIOS
+   ========================================= */
 .servicios {
     padding: 4rem 10%;
     text-align: center;
+}
+
+.servicios h2 {
+    margin-bottom: 3rem;
+    color: var(--primary);
 }
 
 .grid-servicios {
@@ -213,7 +349,19 @@ nav a.activo, nav a:hover {
     max-width: 400px;
 }
 
-/* Footer */
+.servicio-card i {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.servicio-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
 footer {
     background: var(--bg-dark);
     color: var(--accent);
@@ -222,57 +370,33 @@ footer {
     margin-top: 2rem;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .contenido-perfil {
-        flex-direction: column;
-        text-align: center;
-    }
-    .banner-collage {
-        flex-direction: column;
-        height: 600px;
-    }
-}
-
 /* =========================================
    DISEÑO RESPONSIVE (Media Queries)
    ========================================= */
 
-/* 1. ESCRITORIO (Desktop) 
-   No requiere media query adicional. 
-   Es el diseño base que ya escribimos arriba, 
-   pensado para pantallas grandes (más de 900px). */
-
-
-/* 2. TABLET (Pantallas medianas, hasta 900px) */
+/* Tablets (Pantallas medianas, hasta 900px) */
 @media (max-width: 900px) {
-    /* Ajustamos márgenes para que no se vea apretado */
-    section {
+    section, .galeria-especifica, .perfil, .servicios {
         padding: 3rem 5%; 
     }
     
-    /* El banner reduce un poco su altura */
     .banner-collage {
         height: 400px;
     }
 
-    /* En la página Nosotros, la foto y el texto se apilan */
     .contenido-perfil {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
     }
 
-    /* Las tarjetas de servicios se ajustan */
     .grid-servicios {
         gap: 1.5rem;
     }
 }
 
-
-/* 3. MÓVIL (Pantallas pequeñas, celulares, hasta 600px) */
+/* Celulares (Pantallas pequeñas, hasta 600px) */
 @media (max-width: 600px) {
-    /* El menú de navegación se vuelve vertical */
     nav ul {
         flex-direction: column;
         align-items: center;
@@ -280,25 +404,22 @@ footer {
         padding: 1rem 0;
     }
 
-    /* Textos principales más pequeños para que quepan en la pantalla */
     .hero h2 {
         font-size: 1.6rem;
     }
 
-    /* El banner de 4 fotos se apila verticalmente (una foto debajo de otra) */
     .banner-collage {
         flex-direction: column;
-        height: auto; /* Permite que el contenedor crezca según las fotos */
+        height: auto; 
     }
 
     .banner-item {
-        height: 180px; /* Altura fija para cada franja en el celular */
+        height: 180px; 
         width: 100%;
         border-right: none;
         border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Ajustes para la página Nosotros y Contacto */
     .foto-perfil {
         width: 200px;
         height: 200px;
@@ -308,45 +429,16 @@ footer {
         padding: 1.5rem;
     }
 
-    /* Los botones y campos del formulario ocupan el 100% del ancho */
     .campo input, .campo textarea, .btn {
         width: 100%;
     }
-}
-
-/* Esto obliga a que la imagen se adapte al contenedor de la galería */
-.foto-item img {
-    width: 100%;
-    height: 300px; /* Puedes ajustar esta altura */
-    object-fit: cover; /* Esto evita que se estiren o se vean gigantes */
-    border-radius: 8px;
-}
-
-/* Estilo para el submenú de regiones */
-.submenu-regiones {
-    background-color: var(--primary);
-    padding: 10px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.submenu-regiones ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.submenu-regiones a {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid var(--accent);
-}
-
-.submenu-regiones a.activo-region {
-    background-color: var(--accent);
-    color: var(--primary);
+    
+    .submenu-regiones ul {
+        gap: 0.5rem;
+    }
+    
+    .submenu-regiones a {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
 }
