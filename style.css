@@ -199,6 +199,82 @@ footer {
     }
 }
 
+/* Configuración del Banner Collage */
+.banner-collage {
+    display: flex;
+    width: 100%;
+    height: 400px; /* Altura ideal para escritorio */
+    overflow: hidden;
+    position: relative;
+    background-color: var(--bg-dark);
+}
+
+.banner-item {
+    position: relative;
+    flex: 1; /* Hace que cada imagen ocupe el mismo espacio */
+    overflow: hidden;
+    transition: flex 0.6s ease; /* Efecto de expansión al pasar el mouse */
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.banner-item:last-child {
+    border-right: none;
+}
+
+.banner-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que las fotos se deformen */
+    filter: brightness(0.7) contrast(1.1); /* Mejora la profundidad visual */
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+/* Efecto Hover: La región se expande y aclara */
+.banner-item:hover {
+    flex: 1.5;
+}
+
+.banner-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* Texto sobre las imágenes del banner */
+.overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+}
+
+.overlay span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.banner-item:hover .overlay span {
+    opacity: 1;
+}
+
+/* Optimización Responsive para el Banner */
+@media (max-width: 768px) {
+    .banner-collage {
+        height: 250px;
+    }
+    .overlay span {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+}
+
 /* Dispositivos Móviles (pantallas menores a 768px) */
 @media (max-width: 768px) {
     header .logo h1 {
