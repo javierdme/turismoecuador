@@ -313,3 +313,40 @@ footer {
         width: 100%;
     }
 }
+
+/* Esto obliga a que la imagen se adapte al contenedor de la galería */
+.foto-item img {
+    width: 100%;
+    height: 300px; /* Puedes ajustar esta altura */
+    object-fit: cover; /* Esto evita que se estiren o se vean gigantes */
+    border-radius: 8px;
+}
+
+/* Estilo para el submenú de regiones */
+.submenu-regiones {
+    background-color: var(--primary);
+    padding: 10px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.submenu-regiones ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.submenu-regiones a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+}
+
+.submenu-regiones a.activo-region {
+    background-color: var(--accent);
+    color: var(--primary);
+}
