@@ -215,7 +215,7 @@ nav a.activo, nav a:hover {
 }
 
 /* =========================================
-   SECCIÓN NOSOTROS
+   SECCIÓN NOSOTROS (Página Nosotros)
    ========================================= */
 .perfil {
     padding: 4rem 10%;
@@ -246,19 +246,25 @@ nav a.activo, nav a:hover {
     margin-bottom: 1.5rem;
 }
 
+/* Estilo de lista para la página Nosotros */
 .lista-enfoques {
     list-style: none;
     margin-top: 1.5rem;
 }
 
 .lista-enfoques li {
-    margin-bottom: 0.8rem;
-    font-weight: 500;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
 }
 
 .lista-enfoques i {
     color: var(--secondary);
-    margin-right: 10px;
+    margin-right: 15px;
+    font-size: 1.3rem;
+    flex-shrink: 0;
 }
 
 /* =========================================
@@ -319,7 +325,7 @@ nav a.activo, nav a:hover {
 .btn:hover { background-color: var(--secondary); }
 
 /* =========================================
-   SERVICIOS
+   SERVICIOS (Página Inicio)
    ========================================= */
 .servicios {
     padding: 4rem 10%;
@@ -344,10 +350,13 @@ nav a.activo, nav a:hover {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     flex: 1;
-    max-width: 400px;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el icono principal y el título */
 }
 
-.servicio-card i {
+.servicio-card i.fa-3x {
     color: var(--secondary);
     margin-bottom: 1.5rem;
 }
@@ -357,29 +366,31 @@ nav a.activo, nav a:hover {
     color: var(--primary);
 }
 
-/* NUEVA SECCIÓN: LISTAS DE SERVICIOS (Elimina puntos negros) */
+/* LISTAS DENTRO DE SERVICIOS (Alineación perfecta) */
 .lista-servicios {
-    list-style: none;      /* Quita el punto negro */
-    padding: 0;            
-    margin-top: 1.5rem;    
-    text-align: left;      
+    list-style: none; /* Elimina puntos negros */
+    padding: 0;
+    margin-top: 1.5rem;
+    text-align: left; /* Mantiene el texto de la lista a la izquierda */
+    width: 100%;      /* Asegura que ocupe el ancho de la tarjeta */
 }
 
-/* Ajuste para que se vea idéntico a la imagen */
-.lista-servicios li, .lista-enfoques li {
-    margin-bottom: 1.2rem;    /* Aumentamos el espacio entre líneas */
+.lista-servicios li {
+    margin-bottom: 1.2rem;
     display: flex;
-    align-items: center;      /* Alineación perfecta al centro */
-    font-size: 1.15rem;       /* Tamaño exacto para que se vea como la imagen */
-    color: #333;              /* Color de texto oscuro y nítido */
-    letter-spacing: 0.5px;    /* Un toque de espacio entre letras para legibilidad */
+    align-items: flex-start; /* Alinea el icono arriba si el texto tiene varias líneas */
+    font-size: 1.15rem;      /* Tamaño grande como en tu imagen */
+    line-height: 1.4;
+    letter-spacing: 0.5px;
 }
 
-/* Ajuste del ícono para que no flote */
-.lista-servicios i, .lista-enfoques i {
-    color: var(--secondary);  /* Tu color azul */
-    margin-right: 15px;       /* Espacio lateral según la imagen */
-    font-size: 1.3rem;        /* Ícono un poco más grande para resaltar */
+/* El icono azul fas fa-check-circle */
+.lista-servicios .fa-check-circle {
+    color: var(--secondary);
+    margin-right: 15px;
+    font-size: 1.2rem;
+    margin-top: 4px; /* Empuje manual para nivelar con la primera línea de texto */
+    flex-shrink: 0;  /* Evita que el icono se aplaste */
 }
 
 /* =========================================
@@ -452,14 +463,5 @@ footer {
 
     .campo input, .campo textarea, .btn {
         width: 100%;
-    }
-    
-    .submenu-regiones ul {
-        gap: 0.5rem;
-    }
-    
-    .submenu-regiones a {
-        padding: 5px 12px;
-        font-size: 0.8rem;
     }
 }
