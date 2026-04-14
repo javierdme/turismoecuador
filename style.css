@@ -176,7 +176,6 @@ nav a.activo, nav a:hover {
     margin-bottom: 3rem;
 }
 
-/* El Grid para la cuadrícula fotográfica */
 .grid-fotos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -200,7 +199,6 @@ nav a.activo, nav a:hover {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-/* Control estricto para domar las imágenes gigantes */
 .foto-item img {
     width: 100%;
     height: 250px; 
@@ -359,6 +357,27 @@ nav a.activo, nav a:hover {
     color: var(--primary);
 }
 
+/* NUEVA SECCIÓN: LISTAS DE SERVICIOS (Elimina puntos negros) */
+.lista-servicios {
+    list-style: none;      /* Quita el punto negro */
+    padding: 0;            
+    margin-top: 1.5rem;    
+    text-align: left;      
+}
+
+.lista-servicios li {
+    margin-bottom: 0.8rem; 
+    display: flex;         
+    align-items: center;   
+    font-size: 0.95rem;
+}
+
+.lista-servicios .fa-check-circle {
+    color: var(--secondary); 
+    margin-right: 12px;      
+    font-size: 1.1rem;       
+}
+
 /* =========================================
    FOOTER
    ========================================= */
@@ -374,7 +393,6 @@ footer {
    DISEÑO RESPONSIVE (Media Queries)
    ========================================= */
 
-/* Tablets (Pantallas medianas, hasta 900px) */
 @media (max-width: 900px) {
     section, .galeria-especifica, .perfil, .servicios {
         padding: 3rem 5%; 
@@ -395,7 +413,6 @@ footer {
     }
 }
 
-/* Celulares (Pantallas pequeñas, hasta 600px) */
 @media (max-width: 600px) {
     nav ul {
         flex-direction: column;
