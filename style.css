@@ -1,461 +1,444 @@
 /* =========================================
-   VARIABLES GLOBALES Y RESET
-   ========================================= */
+   VARIABLES GLOBALES Y RESET
+   ========================================= */
 :root {
-    --bg-dark: #1b262c;
-    --primary: #0f4c75;
-    --secondary: #3282b8;
-    --accent: #bbe1fa;
-    --white: #ffffff;
-    --font-main: 'Montserrat', sans-serif;
+    --bg-dark: #1b262c;
+    --primary: #0f4c75;
+    --secondary: #3282b8;
+    --accent: #bbe1fa;
+    --white: #ffffff;
+    --font-main: 'Montserrat', sans-serif;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
+    font-family: var(--font-main);
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* =========================================
-   NAVEGACIÓN PRINCIPAL
-   ========================================= */
+   NAVEGACIÓN PRINCIPAL
+   ========================================= */
 header {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-dark);
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1.5rem 0;
-    background-color: var(--primary);
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    background-color: var(--primary);
 }
 
 nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
 }
 
 nav a.activo, nav a:hover {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
 }
 
 /* =========================================
-   HERO SECTION (Inicio)
-   ========================================= */
+   HERO SECTION (Inicio)
+   ========================================= */
 .hero {
-    text-align: center;
-    padding: 4rem 10%;
-    background: var(--white);
+    text-align: center;
+    padding: 4rem 10%;
+    background: var(--white);
 }
 
 .hero h2 {
-    color: var(--primary);
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
 }
 
 /* =========================================
-   BANNER COLLAGE (Inicio)
-   ========================================= */
+   BANNER COLLAGE (Inicio)
+   ========================================= */
 .seccion-banner {
-    width: 100%;
-    overflow: hidden;
+    width: 100%;
+    overflow: hidden;
 }
 
 .banner-collage {
-    display: flex;
-    width: 100%;
-    height: 500px;
-    background-color: #000;
+    display: flex;
+    width: 100%;
+    height: 500px;
+    background-color: #000;
 }
 
 .banner-item {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    transition: flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-decoration: none;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    transition: flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    border-right: 1px solid rgba(255,255,255,0.1);
 }
 
 .banner-item:last-child {
-    border-right: none;
+    border-right: none;
 }
 
 .banner-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.6);
-    transition: transform 0.8s ease, filter 0.6s ease;
-    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    transition: transform 0.8s ease, filter 0.6s ease;
+    display: block;
 }
 
-.banner-item:hover { 
-    flex: 2; 
+.banner-item:hover { 
+    flex: 2; 
 }
 
-.banner-item:hover img { 
-    filter: brightness(1); 
-    transform: scale(1.05);
+.banner-item:hover img { 
+    filter: brightness(1); 
+    transform: scale(1.05);
 }
 
 .overlay {
-    position: absolute;
-    bottom: 40px;
-    width: 100%;
-    text-align: center;
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
 }
 
 .overlay span {
-    color: var(--white);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    font-size: 1.2rem;
 }
 
 /* =========================================
-   GALERÍAS INDIVIDUALES (Regiones)
-   ========================================= */
+   GALERÍAS INDIVIDUALES (Regiones)
+   ========================================= */
 .submenu-regiones {
-    background-color: var(--primary);
-    padding: 15px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    background-color: var(--primary);
+    padding: 15px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .submenu-regiones ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .submenu-regiones a {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 8px 20px;
-    border-radius: 25px;
-    border: 1px solid var(--accent);
-    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 1px solid var(--accent);
+    transition: all 0.3s;
 }
 
 .submenu-regiones a:hover, .submenu-regiones a.activo-region {
-    background-color: var(--accent);
-    color: var(--primary);
+    background-color: var(--accent);
+    color: var(--primary);
 }
 
 .galeria-especifica {
-    padding: 4rem 10%;
-    text-align: center;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 4rem 10%;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .galeria-especifica h2 {
-    color: var(--primary);
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
+    color: var(--primary);
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
 }
 
+/* El Grid para la cuadrícula fotográfica */
 .grid-fotos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
 }
 
 .foto-item {
-    background: var(--white);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: inherit;
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
 }
 
 .foto-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
+/* Control estricto para domar las imágenes gigantes */
 .foto-item img {
-    width: 100%;
-    height: 250px; 
-    object-fit: cover; 
-    border-radius: 4px;
-    display: block;
+    width: 100%;
+    height: 250px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    display: block;
 }
 
 .foto-item h3 {
-    margin-top: 1.5rem;
-    font-size: 1.2rem;
-    color: var(--primary);
-    letter-spacing: 1px;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--primary);
+    letter-spacing: 1px;
 }
 
 /* =========================================
-   SECCIÓN NOSOTROS
-   ========================================= */
+   SECCIÓN NOSOTROS
+   ========================================= */
 .perfil {
-    padding: 4rem 10%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 4rem 10%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .contenido-perfil {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .foto-perfil {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 8px solid var(--accent);
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid var(--accent);
 }
 
 .texto-perfil h2 {
-    color: var(--primary);
-    margin-bottom: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
 }
 
 .lista-enfoques {
-    list-style: none;
-    margin-top: 1.5rem;
+    list-style: none;
+    margin-top: 1.5rem;
 }
 
 .lista-enfoques li {
-    margin-bottom: 0.8rem;
-    font-weight: 500;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
 }
 
 .lista-enfoques i {
-    color: var(--secondary);
-    margin-right: 10px;
+    color: var(--secondary);
+    margin-right: 10px;
 }
 
 /* =========================================
-   FORMULARIO DE CONTACTO
-   ========================================= */
+   FORMULARIO DE CONTACTO
+   ========================================= */
 .contacto {
-    max-width: 700px;
-    margin: 4rem auto;
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 700px;
+    margin: 4rem auto;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .contacto h2 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-    text-align: center;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .contacto p {
-    text-align: center;
-    margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
 }
 
 .campo label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .campo input, .campo textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: var(--font-main);
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-main);
 }
 
 .btn {
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: 0.3s;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.3s;
 }
 
 .btn:hover { background-color: var(--secondary); }
 
 /* =========================================
-   SERVICIOS
-   ========================================= */
+   SERVICIOS
+   ========================================= */
 .servicios {
-    padding: 4rem 10%;
-    text-align: center;
+    padding: 4rem 10%;
+    text-align: center;
 }
 
 .servicios h2 {
-    margin-bottom: 3rem;
-    color: var(--primary);
+    margin-bottom: 3rem;
+    color: var(--primary);
 }
 
 .grid-servicios {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .servicio-card {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    flex: 1;
-    max-width: 400px;
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    flex: 1;
+    max-width: 400px;
 }
 
 .servicio-card i {
-    color: var(--secondary);
-    margin-bottom: 1.5rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
 }
 
 .servicio-card h3 {
-    margin-bottom: 1rem;
-    color: var(--primary);
-}
-
-/* NUEVA SECCIÓN: LISTAS DE SERVICIOS (Elimina puntos negros) */
-.lista-servicios {
-    list-style: none;      /* Quita el punto negro */
-    padding: 0;            
-    margin-top: 1.5rem;    
-    text-align: left;      
-}
-
-.lista-servicios li {
-    margin-bottom: 0.8rem; 
-    display: flex;         
-    align-items: center;   
-    font-size: 0.95rem;
-}
-
-.lista-servicios .fa-check-circle {
-    color: var(--secondary); 
-    margin-right: 12px;      
-    font-size: 1.1rem;       
+    margin-bottom: 1rem;
+    color: var(--primary);
 }
 
 /* =========================================
-   FOOTER
-   ========================================= */
+   FOOTER
+   ========================================= */
 footer {
-    background: var(--bg-dark);
-    color: var(--accent);
-    text-align: center;
-    padding: 3rem;
-    margin-top: 2rem;
+    background: var(--bg-dark);
+    color: var(--accent);
+    text-align: center;
+    padding: 3rem;
+    margin-top: 2rem;
 }
 
 /* =========================================
-   DISEÑO RESPONSIVE (Media Queries)
-   ========================================= */
+   DISEÑO RESPONSIVE (Media Queries)
+   ========================================= */
 
+/* Tablets (Pantallas medianas, hasta 900px) */
 @media (max-width: 900px) {
-    section, .galeria-especifica, .perfil, .servicios {
-        padding: 3rem 5%; 
-    }
-    
-    .banner-collage {
-        height: 400px;
-    }
+    section, .galeria-especifica, .perfil, .servicios {
+        padding: 3rem 5%; 
+    }
+    
+    .banner-collage {
+        height: 400px;
+    }
 
-    .contenido-perfil {
-        flex-direction: column;
-        text-align: center;
-        gap: 2rem;
-    }
+    .contenido-perfil {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
 
-    .grid-servicios {
-        gap: 1.5rem;
-    }
+    .grid-servicios {
+        gap: 1.5rem;
+    }
 }
 
+/* Celulares (Pantallas pequeñas, hasta 600px) */
 @media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
-    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
 
-    .hero h2 {
-        font-size: 1.6rem;
-    }
+    .hero h2 {
+        font-size: 1.6rem;
+    }
 
-    .banner-collage {
-        flex-direction: column;
-        height: auto; 
-    }
+    .banner-collage {
+        flex-direction: column;
+        height: auto; 
+    }
 
-    .banner-item {
-        height: 180px; 
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
+    .banner-item {
+        height: 180px; 
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-    .foto-perfil {
-        width: 200px;
-        height: 200px;
-    }
+    .foto-perfil {
+        width: 200px;
+        height: 200px;
+    }
 
-    .contacto, .contenido-perfil {
-        padding: 1.5rem;
-    }
+    .contacto, .contenido-perfil {
+        padding: 1.5rem;
+    }
 
-    .campo input, .campo textarea, .btn {
-        width: 100%;
-    }
-    
-    .submenu-regiones ul {
-        gap: 0.5rem;
-    }
-    
-    .submenu-regiones a {
-        padding: 5px 12px;
-        font-size: 0.8rem;
-    }
+    .campo input, .campo textarea, .btn {
+        width: 100%;
+    }
+    
+    .submenu-regiones ul {
+        gap: 0.5rem;
+    }
+    
+    .submenu-regiones a {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
 }
