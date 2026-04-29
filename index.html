@@ -4,78 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo en Ecuador | Portafolio</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="activo">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h2>Paisajes que inspiran</h2>
-            <p>Explora la diversidad del Ecuador capturada a través de un dispositivo móvil.</p>
-        </section>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="activo">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <section class="seccion-banner">
-            <div class="banner-collage">
-                <a href="costa.html" class="banner-item">
-                    <img src="img/Costa2.jpg" alt="Costa de Ecuador">
-                    <div class="overlay"><span>Costa</span></div>
-                </a>
-                <a href="sierra.html" class="banner-item">
-                    <img src="img/sierra.jpg" alt="Sierra de Ecuador">
-                    <div class="overlay"><span>Sierra</span></div>
-                </a>
-                <a href="oriente.html" class="banner-item">
-                    <img src="img/oriente.jpg" alt="Amazonía de Ecuador">
-                    <div class="overlay"><span>Oriente</span></div>
-                </a>
-                <a href="galapagos.html" class="banner-item">
-                    <img src="img/galapagos.jpg" alt="Islas Galápagos">
-                    <div class="overlay"><span>Galápagos</span></div>
-                </a>
-            </div>
-        </section>
-        
-       <section class="servicios">
-    <h2><i class="fas fa-map-marked-alt"></i> Servicios</h2>
-    <div class="grid-servicios">
-        
-        <article class="servicio-card">
-        <i class="fas fa-lightbulb fa-3x"></i>    
-            <h3>Planificación de viajes</h3>
-            <ul class="lista-servicios">
-                <li><i class="fas fa-check-circle"></i> Diseño de itinerarios personalizados</li>
-                <li><i class="fas fa-check-circle"></i> Logística de transporte.</li>
-            </ul>
-        </article>
+<main>
 
-        <article class="servicio-card">
-        <i class="fas fa-lightbulb fa-3x"></i>   
-            <h3>Rutas turísticas</h3>
-            <ul class="lista-servicios">
-                <li><i class="fas fa-check-circle"></i> Parque Nacional Cotopaxi</li>
-                <li><i class="fas fa-check-circle"></i> Laguna de Quilotoa</li>
-                <li><i class="fas fa-check-circle"></i> Centro Histórico de Quito</li>
-            </ul>
-        </article>
-        
-    </div>
-</section>
-    </main>
+    <!-- HERO -->
+    <section class="hero">
+        <h2>Paisajes que inspiran</h2>
+        <p>Explora la diversidad del Ecuador capturada a través de un dispositivo móvil.</p>
 
-    <footer>
-        <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
-        <p>Quito, Pichincha - Ecuador</p>
-    </footer>
+        <!-- MENSAJE DINÁMICO -->
+        <p id="mensajeInicio"></p>
+
+        <!-- ÚLTIMA BÚSQUEDA -->
+        <p id="ultimaBusqueda"></p>
+    </section>
+
+    <!-- BANNER -->
+    <section class="seccion-banner">
+        <div class="banner-collage">
+            <a href="costa.html" class="banner-item">
+                <img src="img/Costa2.jpg" alt="Costa de Ecuador">
+                <div class="overlay"><span>Costa</span></div>
+            </a>
+            <a href="sierra.html" class="banner-item">
+                <img src="img/sierra.jpg" alt="Sierra de Ecuador">
+                <div class="overlay"><span>Sierra</span></div>
+            </a>
+            <a href="oriente.html" class="banner-item">
+                <img src="img/oriente.jpg" alt="Amazonía de Ecuador">
+                <div class="overlay"><span>Oriente</span></div>
+            </a>
+            <a href="galapagos.html" class="banner-item">
+                <img src="img/galapagos.jpg" alt="Islas Galápagos">
+                <div class="overlay"><span>Galápagos</span></div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="servicios">
+        <h2><i class="fas fa-map-marked-alt"></i> Servicios</h2>
+
+        <div class="grid-servicios">
+
+            <article class="servicio-card">
+                <i class="fas fa-lightbulb fa-3x"></i>    
+                <h3>Planificación de viajes</h3>
+                <ul class="lista-servicios">
+                    <li><i class="fas fa-check-circle"></i> Diseño de itinerarios personalizados</li>
+                    <li><i class="fas fa-check-circle"></i> Logística de transporte</li>
+                </ul>
+            </article>
+
+            <article class="servicio-card">
+                <i class="fas fa-lightbulb fa-3x"></i>   
+                <h3>Rutas turísticas</h3>
+                <ul class="lista-servicios">
+                    <li><i class="fas fa-check-circle"></i> Parque Nacional Cotopaxi</li>
+                    <li><i class="fas fa-check-circle"></i> Laguna de Quilotoa</li>
+                    <li><i class="fas fa-check-circle"></i> Centro Histórico de Quito</li>
+                </ul>
+            </article>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
+    <p>Quito, Pichincha - Ecuador</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+    // === MENSAJE DINÁMICO ===
+    const mensaje = document.querySelector("#mensajeInicio");
+    mensaje.textContent = "Explora destinos únicos en Ecuador 🌎";
+
+    // === RECUPERAR ÚLTIMA BÚSQUEDA ===
+    const ultima = localStorage.getItem("ultimaBusqueda");
+
+    if (ultima) {
+        document.querySelector("#ultimaBusqueda").textContent =
+            `Último destino buscado: ${ultima}`;
+    }
+</script>
+
 </body>
 </html>
