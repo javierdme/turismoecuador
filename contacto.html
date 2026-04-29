@@ -1,54 +1,91 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto | Turismo en Ecuador</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo">
-            <h1>Fotografía personal</h1>
-            <p>Descubriendo Ecuador a través de mi celular</p>
+
+<header>
+    <div class="logo">
+        <h1>Fotografía personal</h1>
+        <p>Descubriendo Ecuador a través de mi celular</p>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html" class="activo">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <!-- SECCIÓN ORIGINAL -->
+    <section class="contacto">
+        <h2>Trabajemos juntos</h2>
+        <p>
+            ¿Interesado en adquirir fotografías, organizar una sesión de fotos 
+            o colaborar en un proyecto de turismo? Escríbeme.
+        </p>
+    </section>
+
+    <!-- NUEVO FORMULARIO (ACTIVIDAD JS/DOM) -->
+    <section class="form-section">
+        <h2>Planifica tu viaje en Ecuador</h2>
+
+        <form id="formBusqueda">
+
+            <div class="campo">
+                <input type="text" id="nombre" placeholder="Nombre o destino">
+                <small class="error" id="errorNombre"></small>
+            </div>
+
+            <div class="campo">
+                <input type="email" id="email" placeholder="Correo electrónico">
+                <small class="error" id="errorEmail"></small>
+            </div>
+
+            <div class="campo">
+                <input type="text" id="telefono" placeholder="Teléfono">
+                <small class="error" id="errorTelefono"></small>
+            </div>
+
+            <div class="campo">
+                <input type="url" id="web" placeholder="Sitio web (opcional)">
+                <small class="error" id="errorWeb"></small>
+            </div>
+
+            <button type="submit" id="btnEnviar" class="btn" disabled>
+                Buscar destino
+            </button>
+
+        </form>
+
+        <!-- ESTADO DINÁMICO -->
+        <div id="estado" class="estado inicial">
+            <p>Bienvenido, ingresa un destino para buscar.</p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="contacto.html" class="activo">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="contacto">
-            <h2>Trabajemos juntos</h2>
-            <p>¿Interesado en adquirir fotografías, organizar una sesión de fotos o colaborar en un proyecto de turismo? Escríbeme.</p>
-            
-            <form action="#" method="post" class="formulario">
-                <div class="campo">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </div>
-                <div class="campo">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="campo">
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn">Enviar Mensaje</button>
-            </form>
-        </section>
-    </main>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
-        <p>Quito, Pichincha - Ecuador</p>
-    </footer>
+</main>
+
+<footer>
+    <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
+    <p>Quito, Pichincha - Ecuador</p>
+</footer>
+
+<!-- SCRIPT JS (OBLIGATORIO AL FINAL) -->
+<script src="script.js"></script>
+
 </body>
 </html>
