@@ -465,3 +465,87 @@ footer {
         width: 100%;
     }
 }
+
+/* =========================================
+   VALIDACIÓN Y FORMULARIO DINÁMICO (ACTIVIDAD JS)
+   ========================================= */
+
+/* Mensajes de error */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Inputs con error */
+input.error-input {
+    border: 2px solid red !important;
+}
+
+/* Inputs válidos (opcional visual pro) */
+input.valid {
+    border: 2px solid green;
+}
+
+/* Sección del nuevo formulario */
+.form-section {
+    max-width: 600px;
+    margin: 3rem auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.form-section h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+/* Ajuste de inputs dentro del nuevo formulario */
+.form-section .campo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-family: var(--font-main);
+}
+
+/* Botón deshabilitado */
+#btnEnviar:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   ESTADOS DINÁMICOS DEL DOM
+   ========================================= */
+
+.estado {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Estado inicial */
+.inicial {
+    background-color: #eee;
+    color: #555;
+}
+
+/* Estado buscando */
+.buscando {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+/* Estado resultado */
+.resultado {
+    background-color: #d4edda;
+    color: #155724;
+}
