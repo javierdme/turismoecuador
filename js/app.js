@@ -1,53 +1,71 @@
-const inputPais = document.getElementById("inputPais");
-const btnBuscar = document.getElementById("btnBuscar");
+const inputPais = document.querySelector("#inputPais");
 
-const contenedor = document.getElementById("contenedorTarjetas");
+const btnBuscar = document.querySelector("#btnBuscar");
 
-const estado = document.getElementById("estado");
+const contenedor = document.querySelector("#contenedorTarjetas");
 
-const modal = document.getElementById("modal");
+const estado = document.querySelector("#estado");
 
-const detallePais = document.getElementById("detallePais");
+const modal = document.querySelector("#modal");
 
-const cerrarModal = document.getElementById("cerrarModal");
+const detallePais = document.querySelector("#detallePais");
+
+const cerrarModal = document.querySelector("#cerrarModal");
+
+/* =========================================
+   EVENTO BUSCAR
+========================================= */
 
 btnBuscar.addEventListener("click", () => {
 
     const pais = inputPais.value.trim();
 
-    buscarPais(pais);
+    if (pais === "") {
 
+        estado.innerHTML = `
+            <div class="spinner">
+                Escribe un país para buscar
+            </div>
+        `;
+
+        return;
+    }
+
+    localStorage.setItem("ultimaBusqueda", pais);
+
+    buscarPais(pais);
 });
 
-async function buscarPais(nombrePais){
+/* =========================================
+   BUSCAR PAÍS
+========================================= */
+
+async function buscarPais(nombrePais) {
 
     contenedor.innerHTML = "";
 
     estado.innerHTML = `
         <div class="spinner">
-            Cargando...
+            <i class="fas fa-spinner fa-spin"></i>
+            Buscando países...
         </div>
     `;
 
-    try{
+    try {
 
         const url =
         `https://restcountries.com/v3.1/name/${nombrePais}`;
 
         const response = await fetch(url);
 
-        if(!response.ok){
+        if (!response.ok) {
 
-            if(response.status === 404){
-
+            if (response.status === 404) {
                 throw new Error("404");
-
             }
 
-            if(response.status >= 500){
-
+            if (response.status >= 500) {
                 throw new Error("500");
-
             }
 
             throw new Error("general");
@@ -59,22 +77,27 @@ async function buscarPais(nombrePais){
 
         renderizarTarjetas(data);
 
-    }catch(error){
+    } catch (error) {
 
         manejarErrores(error);
-
     }
 }
 
+/* =========================================
+   RENDERIZADO
+========================================= */
 
-function renderizarTarjetas(paises){
+function renderizarTarjetas(paises) {
 
     contenedor.innerHTML = "";
 
-    if(paises.length === 0){
+    if (paises.length === 0) {
 
-        estado.innerHTML =
-        "<p>No se encontraron resultados</p>";
+        estado.innerHTML = `
+            <div class="spinner">
+                No se encontraron resultados
+            </div>
+        `;
 
         return;
     }
@@ -85,24 +108,33 @@ function renderizarTarjetas(paises){
     paises.forEach(pais => {
 
         const tarjeta =
-        document.createElement("div");
+        document.createElement("article");
 
-        tarjeta.classList.add("tarjeta");
+        tarjeta.classList.add("tarjeta-pais");
 
         tarjeta.innerHTML = `
-            <img src="${pais.flags.png}">
+            <img src="${pais.flags.png}" alt="${pais.name.common}">
 
-            <h2>${pais.name.common}</h2>
+            <div class="tarjeta-contenido">
 
-            <p>
-                Capital:
-                ${pais.capital?.[0] || "No disponible"}
-            </p>
+                <h3>${pais.name.common}</h3>
 
-            <p>
-                Población:
-                ${pais.population.toLocaleString()}
-            </p>
+                <p>
+                    <strong>Capital:</strong>
+                    ${pais.capital?.[0] || "No disponible"}
+                </p>
+
+                <p>
+                    <strong>Región:</strong>
+                    ${pais.region}
+                </p>
+
+                <p>
+                    <strong>Población:</strong>
+                    ${pais.population.toLocaleString()}
+                </p>
+
+            </div>
         `;
 
         tarjeta.addEventListener("click", () => {
@@ -118,9 +150,13 @@ function renderizarTarjetas(paises){
     contenedor.appendChild(fragment);
 }
 
-async function obtenerDetalle(nombre){
+/* =========================================
+   DETALLE
+========================================= */
 
-    try{
+async function obtenerDetalle(nombre) {
+
+    try {
 
         const response =
         await fetch(
@@ -131,44 +167,61 @@ async function obtenerDetalle(nombre){
 
         mostrarDetalle(data[0]);
 
-    }catch(error){
+    } catch (error) {
 
         alert("Error cargando detalle");
-
     }
 }
 
-function mostrarDetalle(pais){
+/* =========================================
+   MODAL
+========================================= */
+
+function mostrarDetalle(pais) {
 
     modal.classList.remove("oculto");
 
     detallePais.innerHTML = `
-        <h2>${pais.name.common}</h2>
-
         <img
             src="${pais.flags.png}"
-            width="100%"
+            class="detalle-img"
         >
 
-        <p>
-            Región:
-            ${pais.region}
-        </p>
+        <div class="detalle-info">
 
-        <p>
-            Subregión:
-            ${pais.subregion}
-        </p>
+            <h2>${pais.name.common}</h2>
 
-        <p>
-            Área:
-            ${pais.area.toLocaleString()} km²
-        </p>
+            <p>
+                <strong>Capital:</strong>
+                ${pais.capital?.[0]}
+            </p>
 
-        <p>
-            Continente:
-            ${pais.continents[0]}
-        </p>
+            <p>
+                <strong>Región:</strong>
+                ${pais.region}
+            </p>
+
+            <p>
+                <strong>Subregión:</strong>
+                ${pais.subregion || "No disponible"}
+            </p>
+
+            <p>
+                <strong>Población:</strong>
+                ${pais.population.toLocaleString()}
+            </p>
+
+            <p>
+                <strong>Área:</strong>
+                ${pais.area.toLocaleString()} km²
+            </p>
+
+            <p>
+                <strong>Continente:</strong>
+                ${pais.continents[0]}
+            </p>
+
+        </div>
     `;
 }
 
@@ -178,52 +231,55 @@ cerrarModal.addEventListener("click", () => {
 
 });
 
-function manejarErrores(error){
+/* =========================================
+   ERRORES
+========================================= */
+
+function manejarErrores(error) {
 
     contenedor.innerHTML = "";
 
-    if(error.message === "404"){
+    if (error.message === "404") {
 
         estado.innerHTML = `
-            <p>
-                No se encontraron países
-            </p>
+            <div class="spinner">
 
-            <button onclick="reintentar()">
-                Reintentar
-            </button>
+                No se encontraron países
+
+                <br><br>
+
+                <button class="btn" onclick="reintentar()">
+                    Reintentar
+                </button>
+
+            </div>
         `;
 
         return;
     }
 
-    if(error.message === "500"){
+    if (error.message === "500") {
 
         estado.innerHTML = `
-            <p>
+            <div class="spinner">
                 Error del servidor
-            </p>
+            </div>
         `;
 
         return;
     }
 
     estado.innerHTML = `
-        <p>
+        <div class="spinner">
             Sin conexión a internet
-        </p>
+        </div>
     `;
 }
 
-function reintentar(){
+function reintentar() {
 
     estado.innerHTML = "";
 
+    inputPais.focus();
 }
-
-<li>
-    <a href="explorar.html">
-        Explorar Países
-    </a>
-</li>
 
