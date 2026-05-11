@@ -11,7 +11,9 @@
     min-height: 70vh;
 }
 
-/* BUSQUEDA */
+/* =========================================
+   BUSQUEDA
+========================================= */
 
 .busqueda-container {
 
@@ -39,7 +41,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-/* ESTADOS */
+/* =========================================
+   ESTADOS
+========================================= */
 
 #estado {
 
@@ -54,14 +58,16 @@
 
     color: #856404;
 
-    padding: 1rem;
+    padding: 1rem 1.5rem;
 
     border-radius: 10px;
 
     display: inline-block;
 }
 
-/* GRID TARJETAS */
+/* =========================================
+   GRID TARJETAS
+========================================= */
 
 #contenedorTarjetas {
 
@@ -73,7 +79,9 @@
     gap: 2rem;
 }
 
-/* TARJETA */
+/* =========================================
+   TARJETAS
+========================================= */
 
 .tarjeta-pais {
 
@@ -86,7 +94,7 @@
     box-shadow:
     0 10px 25px rgba(0,0,0,0.1);
 
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
 
     cursor: pointer;
 }
@@ -99,7 +107,9 @@
     0 20px 35px rgba(0,0,0,0.15);
 }
 
-/* IMAGEN TARJETA */
+/* =========================================
+   IMAGEN TARJETA
+========================================= */
 
 .tarjeta-pais img {
 
@@ -112,7 +122,9 @@
     display: block;
 }
 
-/* CONTENIDO */
+/* =========================================
+   CONTENIDO TARJETA
+========================================= */
 
 .tarjeta-contenido {
 
@@ -121,9 +133,9 @@
 
 .tarjeta-contenido h3 {
 
-    margin-bottom: 1rem;
-
     color: #0d6efd;
+
+    margin-bottom: 1rem;
 }
 
 .descripcion-pais {
@@ -133,7 +145,9 @@
     line-height: 1.6;
 }
 
-/* MODAL */
+/* =========================================
+   MODAL
+========================================= */
 
 .modal {
 
@@ -160,9 +174,9 @@
 
     max-width: 700px;
 
-    border-radius: 15px;
-
     padding: 2rem;
+
+    border-radius: 15px;
 
     position: relative;
 
@@ -176,7 +190,9 @@
     display: none;
 }
 
-/* BOTON CERRAR */
+/* =========================================
+   BOTON CERRAR
+========================================= */
 
 .cerrar-modal {
 
@@ -186,16 +202,18 @@
 
     right: 15px;
 
-    border: none;
-
     background: none;
+
+    border: none;
 
     font-size: 1.2rem;
 
     cursor: pointer;
 }
 
-/* IMAGEN DETALLE */
+/* =========================================
+   IMAGEN DETALLE
+========================================= */
 
 .detalle-img {
 
@@ -210,25 +228,55 @@
     margin-bottom: 1rem;
 }
 
-/* INFO DETALLE */
+/* =========================================
+   DETALLE INFO
+========================================= */
 
 .detalle-info h2 {
 
-    margin-bottom: 1rem;
-
     color: #0d6efd;
+
+    margin-bottom: 1rem;
 }
 
 .detalle-info p {
 
-    margin-bottom: 1rem;
+    line-height: 1.8;
 
-    line-height: 1.7;
+    margin-bottom: 1.5rem;
 }
 
-/* RESPONSIVE */
+/* =========================================
+   BOTON WIKIPEDIA
+========================================= */
 
-@media(max-width: 768px){
+.btn-wiki {
+
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    background: #0d6efd;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.3s ease;
+}
+
+.btn-wiki:hover {
+
+    background: #0b5ed7;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width: 768px) {
 
     .explorar-section {
 
