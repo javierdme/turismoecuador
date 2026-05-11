@@ -1,113 +1,160 @@
+<!-- explorar.html -->
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turismo en Ecuador | Portafolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Destinos Turísticos | Turismo Ecuador</title>
+
+    <!-- GOOGLE FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- CSS PRINCIPAL -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <!-- CSS EXPLORAR -->
+    <link
+        rel="stylesheet"
+        href="css/explorar.css"
+    >
+
 </head>
 
 <body>
 
 <header>
+
     <nav>
+
         <ul>
-            <li><a href="index.html" class="activo">Inicio</a></li>
-            <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-            <li><a href="explorar.html">Explorar Países</a></li>
+
+            <li>
+                <a href="index.html">
+                    Inicio
+                </a>
+            </li>
+
+            <li>
+                <a href="nosotros.html">
+                    Nosotros
+                </a>
+            </li>
+
+            <li>
+                <a href="contacto.html">
+                    Contacto
+                </a>
+            </li>
+
+            <li>
+                <a href="explorar.html" class="activo">
+                    Explorar Destinos
+                </a>
+            </li>
+
         </ul>
+
     </nav>
+
 </header>
 
 <main>
 
     <!-- HERO -->
+
     <section class="hero">
-        <h2>Paisajes que inspiran</h2>
-        <p>Explora la diversidad del Ecuador capturada a través de un dispositivo móvil.</p>
 
-        <!-- MENSAJE DINÁMICO -->
-        <p id="mensajeInicio"></p>
+        <h2>
+            Destinos Turísticos del Ecuador
+        </h2>
 
-        <!-- ÚLTIMA BÚSQUEDA -->
-        <p id="ultimaBusqueda"></p>
+        <p>
+            Explora destinos ecuatorianos usando
+            información dinámica desde Wikipedia REST API.
+        </p>
+
     </section>
 
-    <!-- BANNER -->
-    <section class="seccion-banner">
-        <div class="banner-collage">
-            <a href="costa.html" class="banner-item">
-                <img src="img/Costa2.jpg" alt="Costa de Ecuador">
-                <div class="overlay"><span>Costa</span></div>
-            </a>
-            <a href="sierra.html" class="banner-item">
-                <img src="img/sierra.jpg" alt="Sierra de Ecuador">
-                <div class="overlay"><span>Sierra</span></div>
-            </a>
-            <a href="oriente.html" class="banner-item">
-                <img src="img/oriente.jpg" alt="Amazonía de Ecuador">
-                <div class="overlay"><span>Oriente</span></div>
-            </a>
-            <a href="galapagos.html" class="banner-item">
-                <img src="img/galapagos.jpg" alt="Islas Galápagos">
-                <div class="overlay"><span>Galápagos</span></div>
-            </a>
-        </div>
-    </section>
+    <!-- BUSQUEDA -->
 
-    <!-- SERVICIOS -->
-    <section class="servicios">
-        <h2><i class="fas fa-map-marked-alt"></i> Servicios</h2>
+    <section class="explorar-section">
 
-        <div class="grid-servicios">
+        <div class="busqueda-container">
 
-            <article class="servicio-card">
-                <i class="fas fa-lightbulb fa-3x"></i>    
-                <h3>Planificación de viajes</h3>
-                <ul class="lista-servicios">
-                    <li><i class="fas fa-check-circle"></i> Diseño de itinerarios personalizados</li>
-                    <li><i class="fas fa-check-circle"></i> Logística de transporte</li>
-                </ul>
-            </article>
-
-            <article class="servicio-card">
-                <i class="fas fa-lightbulb fa-3x"></i>   
-                <h3>Rutas turísticas</h3>
-                <ul class="lista-servicios">
-                    <li><i class="fas fa-check-circle"></i> Parque Nacional Cotopaxi</li>
-                    <li><i class="fas fa-check-circle"></i> Laguna de Quilotoa</li>
-                    <li><i class="fas fa-check-circle"></i> Centro Histórico de Quito</li>
-                </ul>
-            </article>
+            <input
+                type="text"
+                id="inputPais"
+                placeholder="Busca Quito, Baños, Galápagos..."
+            >
 
         </div>
+
+        <!-- ESTADOS -->
+
+        <div id="estado"></div>
+
+        <!-- TARJETAS -->
+
+        <div id="contenedorTarjetas"></div>
+
     </section>
 
 </main>
 
+<!-- MODAL -->
+
+<div id="modal" class="modal oculto">
+
+    <div class="modal-contenido">
+
+        <button
+            id="cerrarModal"
+            class="cerrar-modal"
+        >
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+        <div id="detallePais"></div>
+
+    </div>
+
+</div>
+
 <footer>
-    <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
-    <p>Quito, Pichincha - Ecuador</p>
+
+    <p>
+        &copy; 2026 Turismo Ecuador.
+        Todos los derechos reservados.
+    </p>
+
+    <p>
+        Quito - Ecuador
+    </p>
+
 </footer>
 
-<!-- SCRIPT -->
-<script>
-    // === MENSAJE DINÁMICO ===
-    const mensaje = document.querySelector("#mensajeInicio");
-    mensaje.textContent = "Explora destinos únicos en Ecuador 🌎";
-
-    // === RECUPERAR ÚLTIMA BÚSQUEDA ===
-    const ultima = localStorage.getItem("ultimaBusqueda");
-
-    if (ultima) {
-        document.querySelector("#ultimaBusqueda").textContent =
-            `Último destino buscado: ${ultima}`;
-    }
-</script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
