@@ -1,7 +1,7 @@
 /* css/explorar.css */
 
 /* =========================================
-   EXPLORAR DESTINOS
+   EXPLORAR PAISES
 ========================================= */
 
 .explorar-section {
@@ -39,6 +39,18 @@
     font-size: 1rem;
 
     font-family: 'Montserrat', sans-serif;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.busqueda-container input:focus {
+
+    border-color: #0d6efd;
+
+    box-shadow:
+    0 0 10px rgba(13,110,253,0.2);
 }
 
 /* =========================================
@@ -63,6 +75,8 @@
     border-radius: 10px;
 
     display: inline-block;
+
+    font-weight: 600;
 }
 
 /* =========================================
@@ -94,7 +108,7 @@
     box-shadow:
     0 10px 25px rgba(0,0,0,0.1);
 
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 
     cursor: pointer;
 }
@@ -115,9 +129,13 @@
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    height: 220px;
 
-    object-fit: cover;
+    object-fit: contain;
+
+    background: #f8f9fa;
+
+    padding: 10px;
 
     display: block;
 }
@@ -136,6 +154,17 @@
     color: #0d6efd;
 
     margin-bottom: 1rem;
+
+    font-size: 1.4rem;
+}
+
+.tarjeta-contenido p {
+
+    margin-bottom: 0.7rem;
+
+    color: #555;
+
+    line-height: 1.6;
 }
 
 .descripcion-pais {
@@ -164,6 +193,8 @@
     align-items: center;
 
     z-index: 999;
+
+    padding: 1rem;
 }
 
 .modal-contenido {
@@ -183,11 +214,34 @@
     max-height: 90vh;
 
     overflow-y: auto;
+
+    animation: aparecer 0.3s ease;
 }
 
 .oculto {
 
     display: none;
+}
+
+/* =========================================
+   ANIMACION MODAL
+========================================= */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.9);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+    }
 }
 
 /* =========================================
@@ -209,6 +263,8 @@
     font-size: 1.2rem;
 
     cursor: pointer;
+
+    color: #333;
 }
 
 /* =========================================
@@ -219,9 +275,13 @@
 
     width: 100%;
 
-    aspect-ratio: 16 / 9;
+    max-height: 300px;
 
-    object-fit: cover;
+    object-fit: contain;
+
+    background: #f8f9fa;
+
+    padding: 10px;
 
     border-radius: 10px;
 
@@ -237,17 +297,21 @@
     color: #0d6efd;
 
     margin-bottom: 1rem;
+
+    font-size: 2rem;
 }
 
 .detalle-info p {
 
     line-height: 1.8;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+
+    color: #444;
 }
 
 /* =========================================
-   BOTON WIKIPEDIA
+   BOTON
 ========================================= */
 
 .btn-wiki {
@@ -265,6 +329,10 @@
     border-radius: 8px;
 
     transition: 0.3s ease;
+
+    margin-top: 1rem;
+
+    font-weight: 600;
 }
 
 .btn-wiki:hover {
@@ -281,6 +349,16 @@
     .explorar-section {
 
         padding: 2rem 5%;
+    }
+
+    .tarjeta-pais img {
+
+        height: 180px;
+    }
+
+    .detalle-info h2 {
+
+        font-size: 1.5rem;
     }
 
 }
