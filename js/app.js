@@ -65,3 +65,55 @@ async function buscarPais(nombrePais){
 
     }
 }
+
+
+function renderizarTarjetas(paises){
+
+    contenedor.innerHTML = "";
+
+    if(paises.length === 0){
+
+        estado.innerHTML =
+        "<p>No se encontraron resultados</p>";
+
+        return;
+    }
+
+    const fragment =
+    document.createDocumentFragment();
+
+    paises.forEach(pais => {
+
+        const tarjeta =
+        document.createElement("div");
+
+        tarjeta.classList.add("tarjeta");
+
+        tarjeta.innerHTML = `
+            <img src="${pais.flags.png}">
+
+            <h2>${pais.name.common}</h2>
+
+            <p>
+                Capital:
+                ${pais.capital?.[0] || "No disponible"}
+            </p>
+
+            <p>
+                Población:
+                ${pais.population.toLocaleString()}
+            </p>
+        `;
+
+        tarjeta.addEventListener("click", () => {
+
+            obtenerDetalle(pais.name.common);
+
+        });
+
+        fragment.appendChild(tarjeta);
+
+    });
+
+    contenedor.appendChild(fragment);
+}
