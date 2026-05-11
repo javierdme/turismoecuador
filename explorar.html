@@ -1,57 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorar Países</title>
 
+    <title>Explorar Países | Turismo Ecuador</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS NUEVO -->
     <link rel="stylesheet" href="css/explorar.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Explora Países Turísticos</h1>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="explorar.html" class="activo">Explorar Países</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
+<main>
 
-        <section class="busqueda">
+    <!-- HERO -->
+    <section class="hero">
+        <h2>Explora Países Turísticos</h2>
+        <p>Busca información turística y geográfica de países del mundo.</p>
+    </section>
+
+    <!-- BUSCADOR -->
+    <section class="explorar-section">
+
+        <div class="busqueda-container">
 
             <input
                 type="text"
                 id="inputPais"
-                placeholder="Escribe un país"
+                placeholder="Escribe un país..."
             >
 
-            <button id="btnBuscar">
+            <button id="btnBuscar" class="btn">
                 Buscar
             </button>
 
-        </section>
-
-        <section id="estado"></section>
-
-        <section id="contenedorTarjetas"></section>
-
-    </main>
-
-    <!-- MODAL -->
-    <div id="modal" class="modal oculto">
-
-        <div class="modal-contenido">
-
-            <button id="cerrarModal">
-                X
-            </button>
-
-            <div id="detallePais"></div>
-
         </div>
+
+        <!-- ESTADOS -->
+        <div id="estado"></div>
+
+        <!-- TARJETAS -->
+        <div id="contenedorTarjetas"></div>
+
+    </section>
+
+</main>
+
+<!-- MODAL -->
+<div id="modal" class="modal oculto">
+
+    <div class="modal-contenido">
+
+        <button id="cerrarModal" class="cerrar-modal">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div id="detallePais"></div>
 
     </div>
 
-    <script src="js/app.js"></script>
+</div>
+
+<footer>
+    <p>&copy; 2026 Javier Fotografía. Todos los derechos reservados.</p>
+    <p>Quito, Pichincha - Ecuador</p>
+</footer>
+
+<script src="js/app.js"></script>
 
 </body>
 </html>
