@@ -19,7 +19,7 @@ const cerrarModal =
 document.querySelector("#cerrarModal");
 
 /* =========================================
-   DESTINOS ECUADOR
+   DESTINOS TURISTICOS ECUADOR
 ========================================= */
 
 const destinosEcuador = [
@@ -42,7 +42,17 @@ const destinosEcuador = [
 
     "Papallacta",
 
-    "Puerto López"
+    "Puerto López",
+
+    "Tena",
+
+    "Vilcabamba",
+
+    "Salinas",
+
+    "Atacames",
+
+    "Riobamba"
 
 ];
 
@@ -53,7 +63,7 @@ const destinosEcuador = [
 inputPais.addEventListener("input", () => {
 
     const texto =
-    inputPais.value.toLowerCase();
+    inputPais.value.toLowerCase().trim();
 
     if (texto.length === 0) {
 
@@ -67,9 +77,27 @@ inputPais.addEventListener("input", () => {
     const filtrados =
     destinosEcuador.filter(destino =>
 
-        destino.toLowerCase().includes(texto)
+        destino
+        .toLowerCase()
+        .includes(texto)
 
     );
+
+    if (filtrados.length === 0) {
+
+        contenedor.innerHTML = "";
+
+        estado.innerHTML = `
+
+            <div class="spinner">
+
+                No se encontraron destinos.
+
+            </div>
+        `;
+
+        return;
+    }
 
     renderizarDestinos(filtrados);
 
@@ -84,8 +112,11 @@ async function renderizarDestinos(destinos) {
     contenedor.innerHTML = "";
 
     estado.innerHTML = `
+
         <div class="spinner">
+
             Buscando destinos...
+
         </div>
     `;
 
@@ -96,18 +127,20 @@ async function renderizarDestinos(destinos) {
 
         try {
 
-            /* =================================
+            /* =============================
                PRIMER FETCH
-            ================================= */
+            ============================== */
 
             const response =
             await fetch(
-            `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destino)}`
+                `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destino)}`
             );
 
             if (!response.ok) {
 
-                throw new Error("404");
+                throw new Error(
+                    `Error HTTP ${response.status}`
+                );
             }
 
             const data =
@@ -121,22 +154,36 @@ async function renderizarDestinos(destinos) {
             tarjeta.innerHTML = `
 
                 <img
-                    src="${data.thumbnail?.source || 'img/default.jpg'}"
+                    src="${
+                        data.thumbnail?.source
+                        || 'img/default.jpg'
+                    }"
+
                     alt="${data.title}"
                 >
 
                 <div class="tarjeta-contenido">
 
-                    <h3>${data.title}</h3>
+                    <h3>
+                        ${data.title}
+                    </h3>
 
                     <p class="descripcion-pais">
 
-                        ${data.extract.substring(0, 140)}...
+                        ${
+                            data.extract
+                            ? data.extract.substring(0, 140)
+                            : "Información turística no disponible."
+                        }...
 
                     </p>
 
                 </div>
             `;
+
+            /* =============================
+               SEGUNDO FETCH
+            ============================== */
 
             tarjeta.addEventListener("click", () => {
 
@@ -148,7 +195,7 @@ async function renderizarDestinos(destinos) {
 
         } catch (error) {
 
-            console.log(error);
+            console.error(error);
         }
     }
 
@@ -166,19 +213,24 @@ async function obtenerDetalle(destino) {
     try {
 
         estado.innerHTML = `
+
             <div class="spinner">
+
                 Cargando detalle...
+
             </div>
         `;
 
         const response =
         await fetch(
-        `https://es.wikipedia.org/api/rest_v1/page/mobile-sections/${encodeURIComponent(destino)}`
+            `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destino)}`
         );
 
         if (!response.ok) {
 
-            throw new Error("404");
+            throw new Error(
+                `Error HTTP ${response.status}`
+            );
         }
 
         const data =
@@ -188,7 +240,18 @@ async function obtenerDetalle(destino) {
 
         estado.innerHTML = "";
 
+        /* =============================
+           LOCAL STORAGE
+        ============================== */
+
+        localStorage.setItem(
+            "ultimaBusqueda",
+            destino
+        );
+
     } catch (error) {
+
+        console.error(error);
 
         manejarErrores(error);
     }
@@ -203,32 +266,46 @@ function mostrarDetalle(data) {
     modal.classList.remove("oculto");
 
     const imagen =
-    data.lead?.sections?.[0]?.thumbnail?.source
+    data.thumbnail?.source
     || "img/default.jpg";
 
     const titulo =
-    data.lead?.displaytitle || "Destino";
+    data.title || "Destino";
 
     const descripcion =
-    data.lead?.sections?.[0]?.text
+    data.extract
     || "Información no disponible.";
+
+    const url =
+    data.content_urls?.desktop?.page || "#";
 
     detallePais.innerHTML = `
 
         <img
             src="${imagen}"
             class="detalle-img"
+            alt="${titulo}"
         >
 
         <div class="detalle-info">
 
-            <h2>${titulo}</h2>
+            <h2>
+                ${titulo}
+            </h2>
 
-            <div>
-
+            <p>
                 ${descripcion}
+            </p>
 
-            </div>
+            <a
+                href="${url}"
+                target="_blank"
+                class="btn-wiki"
+            >
+
+                Ver más en Wikipedia
+
+            </a>
 
         </div>
     `;
@@ -245,7 +322,19 @@ cerrarModal.addEventListener("click", () => {
 });
 
 /* =========================================
-   ERRORES
+   CERRAR MODAL HACIENDO CLICK AFUERA
+========================================= */
+
+window.addEventListener("click", (e) => {
+
+    if (e.target === modal) {
+
+        modal.classList.add("oculto");
+    }
+});
+
+/* =========================================
+   MANEJO ERRORES
 ========================================= */
 
 function manejarErrores(error) {
