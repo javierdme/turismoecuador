@@ -117,3 +117,113 @@ function renderizarTarjetas(paises){
 
     contenedor.appendChild(fragment);
 }
+
+async function obtenerDetalle(nombre){
+
+    try{
+
+        const response =
+        await fetch(
+        `https://restcountries.com/v3.1/name/${nombre}`
+        );
+
+        const data = await response.json();
+
+        mostrarDetalle(data[0]);
+
+    }catch(error){
+
+        alert("Error cargando detalle");
+
+    }
+}
+
+function mostrarDetalle(pais){
+
+    modal.classList.remove("oculto");
+
+    detallePais.innerHTML = `
+        <h2>${pais.name.common}</h2>
+
+        <img
+            src="${pais.flags.png}"
+            width="100%"
+        >
+
+        <p>
+            Región:
+            ${pais.region}
+        </p>
+
+        <p>
+            Subregión:
+            ${pais.subregion}
+        </p>
+
+        <p>
+            Área:
+            ${pais.area.toLocaleString()} km²
+        </p>
+
+        <p>
+            Continente:
+            ${pais.continents[0]}
+        </p>
+    `;
+}
+
+cerrarModal.addEventListener("click", () => {
+
+    modal.classList.add("oculto");
+
+});
+
+function manejarErrores(error){
+
+    contenedor.innerHTML = "";
+
+    if(error.message === "404"){
+
+        estado.innerHTML = `
+            <p>
+                No se encontraron países
+            </p>
+
+            <button onclick="reintentar()">
+                Reintentar
+            </button>
+        `;
+
+        return;
+    }
+
+    if(error.message === "500"){
+
+        estado.innerHTML = `
+            <p>
+                Error del servidor
+            </p>
+        `;
+
+        return;
+    }
+
+    estado.innerHTML = `
+        <p>
+            Sin conexión a internet
+        </p>
+    `;
+}
+
+function reintentar(){
+
+    estado.innerHTML = "";
+
+}
+
+<li>
+    <a href="explorar.html">
+        Explorar Países
+    </a>
+</li>
+
