@@ -1,5 +1,3 @@
-// js/app.js
-
 const inputPais =
 document.querySelector("#inputPais");
 
@@ -19,53 +17,15 @@ const cerrarModal =
 document.querySelector("#cerrarModal");
 
 /* =========================================
-   DESTINOS TURISTICOS ECUADOR
-========================================= */
-
-const destinosEcuador = [
-
-    "Quito",
-
-    "Baños de Agua Santa",
-
-    "Cuenca",
-
-    "Montañita",
-
-    "Galápagos",
-
-    "Otavalo",
-
-    "Mindo",
-
-    "Cotopaxi",
-
-    "Papallacta",
-
-    "Puerto López",
-
-    "Tena",
-
-    "Vilcabamba",
-
-    "Salinas",
-
-    "Atacames",
-
-    "Riobamba"
-
-];
-
-/* =========================================
    BUSQUEDA DINAMICA
 ========================================= */
 
 inputPais.addEventListener("input", () => {
 
     const texto =
-    inputPais.value.toLowerCase().trim();
+    inputPais.value.trim();
 
-    if (texto.length === 0) {
+    if (texto.length < 2) {
 
         contenedor.innerHTML = "";
 
@@ -74,132 +34,121 @@ inputPais.addEventListener("input", () => {
         return;
     }
 
-    const filtrados =
-    destinosEcuador.filter(destino =>
+    buscarPais(texto);
 
-        destino
-        .toLowerCase()
-        .includes(texto)
+});
 
-    );
+/* =========================================
+   PRIMER FETCH
+========================================= */
 
-    if (filtrados.length === 0) {
+async function buscarPais(nombrePais) {
 
-        contenedor.innerHTML = "";
+    try {
 
         estado.innerHTML = `
 
             <div class="spinner">
 
-                No se encontraron destinos.
+                Buscando países...
 
             </div>
         `;
 
-        return;
+        contenedor.innerHTML = "";
+
+        const response =
+        await fetch(
+            `https://restcountries.com/v3.1/name/${nombrePais}`
+        );
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Error HTTP ${response.status}`
+            );
+        }
+
+        const data =
+        await response.json();
+
+        renderizarTarjetas(data);
+
+        estado.innerHTML = "";
+
+    } catch (error) {
+
+        console.error(error);
+
+        manejarErrores(error);
     }
-
-    renderizarDestinos(filtrados);
-
-});
+}
 
 /* =========================================
    RENDERIZAR TARJETAS
 ========================================= */
 
-async function renderizarDestinos(destinos) {
+function renderizarTarjetas(paises) {
 
     contenedor.innerHTML = "";
-
-    estado.innerHTML = `
-
-        <div class="spinner">
-
-            Buscando destinos...
-
-        </div>
-    `;
 
     const fragment =
     document.createDocumentFragment();
 
-    for (const destino of destinos) {
+    paises.forEach(pais => {
 
-        try {
+        const tarjeta =
+        document.createElement("article");
 
-            /* =============================
-               PRIMER FETCH
-            ============================== */
+        tarjeta.classList.add("tarjeta-pais");
 
-            const response =
-            await fetch(
-                `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destino)}`
+        tarjeta.innerHTML = `
+
+            <img
+                src="${pais.flags.svg}"
+                alt="${pais.name.common}"
+            >
+
+            <div class="tarjeta-contenido">
+
+                <h3>
+                    ${pais.name.common}
+                </h3>
+
+                <p>
+
+                    <strong>Capital:</strong>
+
+                    ${pais.capital?.[0] || "N/A"}
+
+                </p>
+
+                <p>
+
+                    <strong>Población:</strong>
+
+                    ${pais.population.toLocaleString()}
+
+                </p>
+
+            </div>
+        `;
+
+        /* =============================
+           SEGUNDO FETCH
+        ============================== */
+
+        tarjeta.addEventListener("click", () => {
+
+            obtenerDetalle(
+                pais.cca3
             );
 
-            if (!response.ok) {
+        });
 
-                throw new Error(
-                    `Error HTTP ${response.status}`
-                );
-            }
+        fragment.appendChild(tarjeta);
 
-            const data =
-            await response.json();
-
-            const tarjeta =
-            document.createElement("article");
-
-            tarjeta.classList.add("tarjeta-pais");
-
-            tarjeta.innerHTML = `
-
-                <img
-                    src="${
-                        data.thumbnail?.source
-                        || 'img/default.jpg'
-                    }"
-
-                    alt="${data.title}"
-                >
-
-                <div class="tarjeta-contenido">
-
-                    <h3>
-                        ${data.title}
-                    </h3>
-
-                    <p class="descripcion-pais">
-
-                        ${
-                            data.extract
-                            ? data.extract.substring(0, 140)
-                            : "Información turística no disponible."
-                        }...
-
-                    </p>
-
-                </div>
-            `;
-
-            /* =============================
-               SEGUNDO FETCH
-            ============================== */
-
-            tarjeta.addEventListener("click", () => {
-
-                obtenerDetalle(destino);
-
-            });
-
-            fragment.appendChild(tarjeta);
-
-        } catch (error) {
-
-            console.error(error);
-        }
-    }
-
-    estado.innerHTML = "";
+    });
 
     contenedor.appendChild(fragment);
 }
@@ -208,7 +157,7 @@ async function renderizarDestinos(destinos) {
    SEGUNDO FETCH
 ========================================= */
 
-async function obtenerDetalle(destino) {
+async function obtenerDetalle(codigoPais) {
 
     try {
 
@@ -223,7 +172,7 @@ async function obtenerDetalle(destino) {
 
         const response =
         await fetch(
-            `https://es.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(destino)}`
+            `https://restcountries.com/v3.1/alpha/${codigoPais}`
         );
 
         if (!response.ok) {
@@ -236,18 +185,9 @@ async function obtenerDetalle(destino) {
         const data =
         await response.json();
 
-        mostrarDetalle(data);
+        mostrarDetalle(data[0]);
 
         estado.innerHTML = "";
-
-        /* =============================
-           LOCAL STORAGE
-        ============================== */
-
-        localStorage.setItem(
-            "ultimaBusqueda",
-            destino
-        );
 
     } catch (error) {
 
@@ -258,54 +198,68 @@ async function obtenerDetalle(destino) {
 }
 
 /* =========================================
-   MOSTRAR MODAL
+   MODAL
 ========================================= */
 
-function mostrarDetalle(data) {
+function mostrarDetalle(pais) {
 
     modal.classList.remove("oculto");
-
-    const imagen =
-    data.thumbnail?.source
-    || "img/default.jpg";
-
-    const titulo =
-    data.title || "Destino";
-
-    const descripcion =
-    data.extract
-    || "Información no disponible.";
-
-    const url =
-    data.content_urls?.desktop?.page || "#";
 
     detallePais.innerHTML = `
 
         <img
-            src="${imagen}"
+            src="${pais.flags.svg}"
             class="detalle-img"
-            alt="${titulo}"
+            alt="${pais.name.common}"
         >
 
         <div class="detalle-info">
 
             <h2>
-                ${titulo}
+
+                ${pais.name.common}
+
             </h2>
 
             <p>
-                ${descripcion}
+
+                <strong>Capital:</strong>
+
+                ${pais.capital?.[0] || "N/A"}
+
             </p>
 
-            <a
-                href="${url}"
-                target="_blank"
-                class="btn-wiki"
-            >
+            <p>
 
-                Ver más en Wikipedia
+                <strong>Región:</strong>
 
-            </a>
+                ${pais.region}
+
+            </p>
+
+            <p>
+
+                <strong>Subregión:</strong>
+
+                ${pais.subregion || "N/A"}
+
+            </p>
+
+            <p>
+
+                <strong>Población:</strong>
+
+                ${pais.population.toLocaleString()}
+
+            </p>
+
+            <p>
+
+                <strong>Área:</strong>
+
+                ${pais.area.toLocaleString()} km²
+
+            </p>
 
         </div>
     `;
@@ -321,10 +275,6 @@ cerrarModal.addEventListener("click", () => {
 
 });
 
-/* =========================================
-   CERRAR MODAL HACIENDO CLICK AFUERA
-========================================= */
-
 window.addEventListener("click", (e) => {
 
     if (e.target === modal) {
@@ -334,7 +284,7 @@ window.addEventListener("click", (e) => {
 });
 
 /* =========================================
-   MANEJO ERRORES
+   ERRORES
 ========================================= */
 
 function manejarErrores(error) {
